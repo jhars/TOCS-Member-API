@@ -1,0 +1,32 @@
+{
+  "name": "tocs-memberapi",
+  "version": "1.0.0",
+  "description": "TOCS Member API for Auth",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "API",
+    "TOCS",
+    "Member",
+    "Authentication"
+  ],
+  "author": "Jon Harlan",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^1.17.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.3",
+    "express-bearer-token": "^2.1.1",
+    "express-promise-router": "^3.0.1",
+    "mongoose": "^5.0.12",
+    "promise": "^8.0.1",
+    "request": "^2.85.0",
+    "request-promise": "^4.2.2"
+  }
+}
