@@ -5,9 +5,15 @@ MEMBER API:
 ###########
 Save Each User in DB
 
+==================================================
+==================================================
+
 Build GET route for Retrieving User by phone/email
 	-> Return 200 Error
 
+Optimize Error Codes 
+
+(tdd, is it better?)
 ___________
 Iron WiFi:
 ###########

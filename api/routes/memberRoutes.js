@@ -5,14 +5,17 @@ module.exports = function(app) {
   // todoList Routes
   app.route('/members')
     .get(members.list_all_members)
-    .post(members.create_a_member) // is this appropriate?
+    // .post(members.create_a_member)
 
-  app.route('/members/all')
+  app.route('/members/cobot/member_data')
   	.get(members.fetch_all_members)
 
-  app.route('/member')
+  app.route('/member_by/email')
     .post(members.find_member_by_email)
   //   .get(todoList.read_a_member)
   //   .put(todoList.update_a_member)
   //   .delete(todoList.delete_a_member);
+
+  app.route('/member_by/phone_number')
+    .post(members.find_member_by_phone)
 };

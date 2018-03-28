@@ -6,8 +6,7 @@ const mongoose = require('mongoose'),
   rp = require('request-promise');
 
 
-
-
+// ============== API METHODS ===================//
 
 exports.fetch_all_members = function(req, res) {
 
@@ -20,24 +19,13 @@ exports.fetch_all_members = function(req, res) {
   }
   
   rp(cobotAllMembersAPIRequest).then(data => {
-    console.log("We have the data!!")
-    console.log(data.length)
+    console.log("RECORDS LENGTH " + data.length)
     
     var obj1;
 
     for (var property1 in data) {
       
       obj1 = data[property1];
-
-      // console.log(obj1);
-
-
-      // if (var email = obj1["user"]["email"]) {
-
-      // }
-      
-      // console.log(obj1["email"]);
-
       
       var member = new Member({
         name: obj1["name"],
@@ -45,12 +33,6 @@ exports.fetch_all_members = function(req, res) {
         phone: obj1["phone"],
         membership_plan: obj1["plan"]["name"]
       })
-
-      // member.save(function(member, err) {
-      //   if (err)
-      //     res.send(err)
-      //   console.log(member.name)
-      // })
 
       console.log(member.name)
       member.save()
@@ -69,19 +51,19 @@ exports.fetch_all_members = function(req, res) {
 //==================================================
 //==================================================
 
-
-// FIND BY MEMBER EMAIL FUNCTION HERE
-
+// POST -  .find {Member by:EMAIL}
 exports.find_member_by_email = function(req, res) {
-  
-  console.log(req.body);
-
-
-  // Member.find()
-  //   TeamPoster.find(function (err, foundTeams){
-  //   res.json(foundTeams);
-  // })
   Member.find({email: req.body.email}, function(err, member) {
+    if (err)
+      res.send(err);
+    res.json(member);
+  });
+};
+
+// POST - .find {Member by:PHONE}
+// ToDo: Normalize Phone String in fetch_all_members
+exports.find_member_by_phone = function(req, res) {
+  Member.find({phone: req.body.phone}, function(err, member) {
     if (err)
       res.send(err);
     res.json(member);
@@ -90,25 +72,29 @@ exports.find_member_by_email = function(req, res) {
 
 
 
-exports.create_a_member = function(req, res) {
-  var new_member = new Member(req.body);
-  new_member.save(function(err, member) {
-    if (err)
-      res.send(err)
-    res.json(member)
-  })
-}
-
+// GET - List All Members
 exports.list_all_members = function(req, res) {
-  // Member.find({}, function(err, member) {
   Member.find({}, function(err, member) {
     if (err)
       res.send(err)
+
+
+
     res.json(member)
   })
 }
 
+//==================================================
+//==================================================
 
+// exports.create_a_member = function(req, res) {
+//   var new_member = new Member(req.body);
+//   new_member.save(function(err, member) {
+//     if (err)
+//       res.send(err)
+//     res.json(member)
+//   })
+// }
 
 
 
