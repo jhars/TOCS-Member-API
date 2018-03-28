@@ -1,4 +1,4 @@
-var express = require('express'),
+const express = require('express'),
   app = express(),
   port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
@@ -14,7 +14,7 @@ mongoose.connect('mongodb://localhost/tocs-member-database');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var routes = require('./api/routes/memberRoutes'); //importing route
+const routes = require('./api/routes/memberRoutes'); //importing route
 routes(app); //register the route
 
 app.use(function(req, res) {

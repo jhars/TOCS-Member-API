@@ -1,6 +1,6 @@
 'use strict';
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose'),
+  Schema = mongoose.Schema;;
 
 
 var MemberSchema = new Schema({
@@ -8,17 +8,33 @@ var MemberSchema = new Schema({
     type: String,
     required: 'Kindly enter the name of the member'
   },
+  email: {
+    type: String,
+    required: 'Kindly enter the email of the member'
+  },
+  phone: {
+    type: String,
+    required: 'Kindly enter the phone of the member'
+  },
+  membership_plan: [{
+    type: String,
+    enum: [
+      'Road Warrior',
+      'Small Business',
+      'Drop-In',
+      'Free Lancer',
+      'Mailbox',
+      'Regular',
+      'Partner',
+      'Small Business Membership',
+      'Partner - Barter'
+    ],
+    default: ['Drop-In']
+  }],
   Created_date: {
     type: Date,
     default: Date.now
   },
-  // status: {
-  type: [{
-    type: String,
-    enum: ['Road Warrior', 'Small Business', 'Drop-In']
-  }],
-  default: ['Drop-In']
-  // }
 });
 
 module.exports = mongoose.model('Members', MemberSchema);
