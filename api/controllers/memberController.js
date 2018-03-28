@@ -69,6 +69,27 @@ exports.fetch_all_members = function(req, res) {
 //==================================================
 //==================================================
 
+
+// FIND BY MEMBER EMAIL FUNCTION HERE
+
+exports.find_member_by_email = function(req, res) {
+  
+  console.log(req.body);
+
+
+  // Member.find()
+  //   TeamPoster.find(function (err, foundTeams){
+  //   res.json(foundTeams);
+  // })
+  Member.find({email: req.body.email}, function(err, member) {
+    if (err)
+      res.send(err);
+    res.json(member);
+  });
+};
+
+
+
 exports.create_a_member = function(req, res) {
   var new_member = new Member(req.body);
   new_member.save(function(err, member) {
@@ -89,15 +110,6 @@ exports.list_all_members = function(req, res) {
 
 
 
-// FIND BY MEMBER PHONE NUMBER FUNCTION HERE
-
-// exports.read_a_task = function(req, res) {
-//   Task.findById(req.params.taskId, function(err, task) {
-//     if (err)
-//       res.send(err);
-//     res.json(task);
-//   });
-// };
 
 
 // exports.update_a_task = function(req, res) {
