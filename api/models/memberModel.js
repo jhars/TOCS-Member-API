@@ -16,7 +16,7 @@ var MemberSchema = new Schema({
     type: String,
     required: 'Kindly enter the phone of the member'
   },
-  membership_plan: [{
+  membership_plan: {
     type: String,
     enum: [
       'Road Warrior',
@@ -30,7 +30,7 @@ var MemberSchema = new Schema({
       'Partner - Barter'
     ],
     default: ['Drop-In']
-  }],
+  },
   Created_date: {
     type: Date,
     default: Date.now

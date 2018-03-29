@@ -8,6 +8,8 @@ const mongoose = require('mongoose'),
 
 // ============== API METHODS ===================//
 
+
+// GET - Populate 'members' database (via COBOT API)
 exports.fetch_all_members = function(req, res) {
 
   const cobotAllMembersAPIRequest = {
@@ -54,9 +56,45 @@ exports.fetch_all_members = function(req, res) {
 // POST -  .find {Member by:EMAIL}
 exports.find_member_by_email = function(req, res) {
   Member.find({email: req.body.email}, function(err, member) {
-    if (err)
-      res.send(err);
-    res.json(member);
+    
+    console.log(member);
+
+    if (err) {
+      res.status(400); // Bad Request
+      // res.status(401); // Unauthorized
+      // res.status(402); // payment required
+      // res.status(403);    // forbidden
+      res.send(err);      
+    } else if (member.length == 0) {
+      res.status(403);
+      res.json("No TOCS/COBOT Members w/ with matching email");  
+    } else {
+
+      
+
+
+
+      var obj1;
+
+      for (var i in member) {
+
+        const plan = member[i]['membership_plan'];
+
+        if (plan == ('Road Warrior' || 'Small Business Membership')) {
+          
+          res.status(200)
+          // res.json("Access to Premimum WiFi Granted");
+
+        } else {
+          res.status(401); // Unauthorized
+        }
+
+        console.log(obj1); //need smarter logic for handling membership_plans
+      }
+
+      res.json(member);
+    }
+  
   });
 };
 
@@ -75,12 +113,14 @@ exports.find_member_by_phone = function(req, res) {
 // GET - List All Members
 exports.list_all_members = function(req, res) {
   Member.find({}, function(err, member) {
-    if (err)
+    
+    if (err) {
+      res.status(400); // Bad Request
       res.send(err)
-
-
-
-    res.json(member)
+    } else {
+      res.json(member)
+    }
+    
   })
 }
 
