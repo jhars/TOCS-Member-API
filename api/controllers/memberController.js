@@ -53,6 +53,53 @@ exports.fetch_all_members = function(req, res) {
 //==================================================
 //==================================================
 
+// authenticate_member_ironwifi
+exports.authenticate_member_ironwifi = function(req, res) {
+  Member.find({email: req.params.member_email}, function(err, member) {
+    
+    // console.log(req.params.member_email);
+    // console.log(req.query);
+    // console.log(member);
+
+    if (err) {
+      res.status(400); // Bad Request
+      // res.status(401); // Unauthorized
+      // res.status(402); // payment required
+      // res.status(403);    // forbidden
+      res.send(err);      
+    } else if (member.length == 0) {
+      res.status(403);
+      res.json("No TOCS/COBOT Members w/ with matching email");  
+    } else {
+
+      
+
+
+
+      var obj1;
+
+      for (var i in member) {
+
+        const plan = member[i]['membership_plan'];
+
+        if (plan == 'Road Warrior' || plan == 'Small Business Membership') {
+          
+          res.status(200)
+          // res.json("Access to Premimum WiFi Granted");
+
+        } else {
+          res.status(401); // Unauthorized
+        }
+
+        console.log(obj1); //need smarter logic for handling membership_plans
+      }
+
+      res.json(member);
+    }
+  
+  });
+};
+
 // POST -  .find {Member by:EMAIL}
 exports.find_member_by_email = function(req, res) {
   Member.find({email: req.body.email}, function(err, member) {

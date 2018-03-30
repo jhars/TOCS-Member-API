@@ -24,9 +24,13 @@
     "express": "^4.16.3",
     "express-bearer-token": "^2.1.1",
     "express-promise-router": "^3.0.1",
+    "http": "0.0.0",
     "mongoose": "^5.0.12",
     "promise": "^8.0.1",
     "request": "^2.85.0",
     "request-promise": "^4.2.2"
+  },
+  "engines": {
+    "node": "8.2.1"
   }
 }
