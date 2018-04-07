@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 // mongoose instance connection url connection
 mongoose.Promise = global.Promise;
 
-var uristring = process.env.MONGODB_URI || process.env.MONGOLAB_AQUA_URI || 'mongodb://localhost/tocs-member-database';
-// var uristring = 'mongodb://localhost/tocs-member-database';
+// var uristring = process.env.MONGODB_URI || process.env.MONGOLAB_AQUA_URI || 'mongodb://localhost/tocs-member-database';
+var uristring = process.env.MONGOLAB_AQUA_URI || 'mongodb://localhost/tocs-member-database';
 
 mongoose.connect(uristring, function (err, client) {
 	if (err) {
