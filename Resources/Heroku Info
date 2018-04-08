@@ -1,0 +1,35 @@
+Heroku Info:
+
+Password:
+Ck06jhar$
+
+mongo ds237989.mlab.com:37989/heroku_k43wgg60 -u tocsadmin -p Morgan2006
+
+mongo ds237989.mlab.com:37989/heroku_k43wgg60 -u <dbuser> -p <dbpassword>
+
+mongo ds012345.mlab.com:56789/dbname -u dbuser -p dbpasswor
+
+export MONGOLAB_URI="mongodb://tocsadmin:Morgan2006@ds237989:37989/tocs-api"
+
+"mongodb://example:example@ds053312.mongolab.com:53312/todolist"
+
+mongodb://tocsadmin:Morgan2006@ds237989:37989/tocs-api
+
+mongodb://tocsadmin:Morgan2006@ds237989.mlab.com:37989/heroku_k43wgg60
+
+
+mongo ds237989.mlab.com:37989/heroku_k43wgg60 -u <dbuser> -p <dbpassword>
+
+heroku config:set MONGODB_URI=mongodb://tocsadmin:Morgan2006@@ds237989:37989/tocs-api
+
+mongodb://<dbuser>:<dbpassword>@ds239009.mlab.com:39009/heroku_9zqkccpx
+
+
+heroku config:set MONGODB_URI=mongodb://tocsadmin:morgan2006@ds239009:39009/heroku_9zqkccpx
+
+
+
+heroku config:set MONGODB_URI=mongodb://tocsadmin:morgan2006@ds239009:39009/heroku_9zqkccpx
+
+
+mongodb://<dbuser>:<dbpassword>@ds239009.mlab.com:39009/heroku_br68bf21
