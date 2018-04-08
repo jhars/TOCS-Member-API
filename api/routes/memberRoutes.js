@@ -19,6 +19,6 @@ module.exports = function(app) {
   app.route('/member_by/phone_number')
     .post(members.find_member_by_phone)
 
-  app.route('/signin/rest/:member_email')
-    .get(members.authenticate_member_ironwifi)
+  app.route('/signin/rest/')
+    .post(members.authenticate_member_ironwifi)
 };

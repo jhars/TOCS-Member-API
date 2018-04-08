@@ -55,7 +55,7 @@ exports.fetch_all_members = function(req, res) {
 
 // authenticate_member_ironwifi
 exports.authenticate_member_ironwifi = function(req, res) {
-  Member.find({email: req.params.member_email}, function(err, member) {
+  Member.find({email: req.body.email}, function(err, member) {
     
     // console.log(req.params.member_email);
     // console.log(req.query);
