@@ -6,6 +6,7 @@ const mongoose = require('mongoose'),
   rp = require('request-promise');
 
 const bearerToken = "Bearer 4a0443d7ea815fb1404e65e07da04d2af54bd97a3ae33134b6aa8d03ffa79458"
+var pswd = "Grand Circus"
 
 // ============== API METHODS ===================//
 //_________________________________________________________________
@@ -69,6 +70,55 @@ exports.find_member_by_phone = function(req, res) {
     if (err)
       res.send(err);
     res.json(member);
+  });
+};
+
+
+//_______________________________________________________________
+// POST - Route setup for Captive-Portal REST-Auth tool to hit.
+// ...this is the 'gateway' to premium network
+
+// authenticate_member_ironwifi
+exports.authenticate_member_ironwifi = function(req, res) {
+  
+  Member.find({email: req.body.email}, function(err, member) {
+
+    if (err) {
+      res.status(400); // Bad Request
+      // res.status(401); // Unauthorized
+      // res.status(402); // payment required
+      // res.status(403);    // forbidden
+      res.send(err);      
+    } else if (member.length == 0) {
+      res.status(403);
+      res.json("No TOCS/COBOT Members w/ with matching email");  
+    } else {
+      
+      var obj1;
+      for (var i in member) {
+        
+        const plan = member[i]['membership_plan'];
+        var msg;
+
+        if (plan == 'Road Warrior' || plan == 'Small Business Membership') {
+          msg = "Welcome " + plan + " Member! \n the password for our faster, premium network is " + wifiPassword;
+          
+          res.status(200)
+        } else {
+          msg = "Thanks for signing in! " + plan + " Member! Enjoy Free Wi-Fi!";
+          pswd = null
+          res.status(401); // Unauthorized
+        }
+        console.log("___________iteration logic object: " + i + "\n___________" + obj1); //need smarter logic for handling membership_plans
+      }
+
+      res.json({
+        message: msg,
+        password: pswd
+      });
+
+      res.status(500)
+    }
   });
 };
 
@@ -184,10 +234,6 @@ exports.confirm_membership_cobot_subscription = function(req, res) {
 // authenticate_member_ironwifi
 exports.authenticate_member_ironwifi = function(req, res) {
   Member.find({email: req.body.email}, function(err, member) {
-    
-    // console.log(req.params.member_email);
-    // console.log(req.query);
-    // console.log(member);
 
     if (err) {
       res.status(400); // Bad Request
