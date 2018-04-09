@@ -99,7 +99,7 @@ exports.subscribe_to_cobot_comfirm_membership_subscription = function(req, res) 
 
 exports.confirm_membership_cobot_subscription = function(req, res) {
   const memberData = req.body
-  console.log(memberData);
+  console.log("THIS IS MY MEMBER DATA: ->\n" + memberData);
 
   const fetchedURL = memberData["url"]
 
@@ -115,7 +115,8 @@ exports.confirm_membership_cobot_subscription = function(req, res) {
   rp(getNewMemberCobotAPIRequest).then(data => {
 
     //Create New Member in TOCS-API from a new member being created on COBOT
-
+    console.log("THEN DATAAAAAA...." + data)
+    
     var member = new Member({
       name: data["name"],
       email: data["email"],
@@ -123,7 +124,7 @@ exports.confirm_membership_cobot_subscription = function(req, res) {
       membership_plan: obj1["plan"]["name"]
     })
 
-    console.log(member.name)
+    console.log("MEMBER NAME: " + member.name)
     member.save()
 
 
