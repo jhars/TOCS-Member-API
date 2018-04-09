@@ -101,7 +101,7 @@ exports.confirm_membership_cobot_subscription = function(req, res) {
   const memberData = req.body
   console.log("THIS IS MY MEMBER DATA: ->\n" + memberData);
 
-  const fetchedURL = memberData["url"]
+  const fetchedURL = req.body["url"]
 
   // https://the-office-ro.cobot.me/api/memberships/dae9fc20daea2df5700de5d6755027d7
   const getNewMemberCobotAPIRequest = {
@@ -116,6 +116,7 @@ exports.confirm_membership_cobot_subscription = function(req, res) {
 
     //Create New Member in TOCS-API from a new member being created on COBOT
     console.log("THEN DATAAAAAA...." + data)
+    console.log("THEN LENGTH...." + data.length)
     
     var member = new Member({
       name: data["name"],
