@@ -130,8 +130,31 @@ exports.confirm_membership_cobot_subscription = function(req, res) {
     
     console.log("MEMBER ID: " + data["id"]);
     console.log("MEMBER EMAIL: " + data["email"]);
+    console.log("MEMBER NAME: " + data["name"]);
+    console.log("MEMBER PHONE: " + data["phone"]);
+
+    let id = data["id"]
+    let name = data["name"]
+    let email =data["email"]
+    let phone = data["phone"]
+    let membership_plan = data["plan"]["name"]
+
+
+
 
     console.log("========== Sanity Check #2 ==========")
+
+    var member = new Member({
+      name: name,
+      email: email,
+      phone: phone,
+      membership_plan: membership_plan
+    })
+
+    console.log("MEMBER NAME: " + member.name)
+    member.save()
+
+    console.log("========== Sanit Check #3 ==========")
 
     var obj1;
     for (var property1 in data) {
@@ -140,7 +163,8 @@ exports.confirm_membership_cobot_subscription = function(req, res) {
       console.log("========== SANITY Check " + property1 + " ==========")
     }
 
-    console.log("========== Sanit Check #3 ==========")
+    
+    console.log("========== Sanit Check #4 ==========")
 
     
     // var member = new Member({
