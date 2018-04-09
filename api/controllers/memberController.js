@@ -60,12 +60,17 @@ exports.subscribe_to_cobot_comfirm_membership_subscription = function(req, res) 
     const callbackRoute = "https://tocs-api.herokuapp.com/member/confirm"
     // const callbackRoute = "https://localhost:300/member/confirm"
 
+    //"Bearer 912e7a5f4c1cb6f3078f45b584cdf38fd70b6683dd3cc6a075522143bc484af2"
+    // 99d6e5ea15c649d04cc99a563b36db74cd045421ecdb29a4c53f0e8ee9aaee46
+
+    // IS THIS THE ACCCESS TOKEN NOW??
+    // 4a0443d7ea815fb1404e65e07da04d2af54bd97a3ae33134b6aa8d03ffa79458
+
     var cobotSubscribeRequest = {
       method: 'POST',
       uri: "https://the-office-ro.cobot.me/api/subscriptions/",
       headers: {
-        "Authorization": "Bearer 912e7a5f4c1cb6f3078f45b584cdf38fd70b6683dd3cc6a075522143bc484af2"
-        // 99d6e5ea15c649d04cc99a563b36db74cd045421ecdb29a4c53f0e8ee9aaee46
+        "Authorization": "Bearer 4a0443d7ea815fb1404e65e07da04d2af54bd97a3ae33134b6aa8d03ffa79458"
       },
       body: {
         "event": "confirmed_membership",
