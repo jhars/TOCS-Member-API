@@ -42,7 +42,16 @@ UNIFI:
 => Setup Hosting/Domain
 
 
+COBOT MEMBERSHIP PURTCHASE URL:
+https://the-office-ro.cobot.me/
 
+- - - - - - - - - 
+Add Footer
+- - - - - - - - - 
+Wire Up Premium Network ion Iron WiFi
+- - - - - - - - - 
+Free Network Design Improvements
+- - - - - - - - - 
 
 - - - - - - - - - 
 

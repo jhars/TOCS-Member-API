@@ -14,8 +14,16 @@
 
 	if (x.innerHTML.includes("401")) {
 	
-		x.innerHTML = "YOU ARE NOT AUTHORIZED TO ACCESS THE SUPER-FAST NETWORK, BUT YOU CAN CREATE A COBOT ACCOUNT HERE & SIGN UP FOR A PARTNER OR ROAD-WARRIOR MEMBERSHIPS";
+		x.innerHTML = "GREETINGS OCS Member! We are so happy to have you as a drop-in member, but in order to access our premium, high-speed, network, you'll need to upgrade to a Road Warrrior or Small Business membership by following the link below. ";
 	
+		var a = document.createElement("a");
+		a.href = a.href = "https://the-office-ro.cobot.me/"
+		var node = document.createTextNode("Sign Up for premium access here!");
+		a.appendChild(node);
+
+		// var element = document.getElementById("div1");
+		x.appendChild(a);
+
 	} else if (x.innerHTML.includes("400")) {
 		x.innerHTML = "400 ERROR RESPONSE: INVALID/BAD REQUEST";
 	
@@ -25,3 +33,4 @@
 
 
 </script>
+
