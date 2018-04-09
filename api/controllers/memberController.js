@@ -117,7 +117,8 @@ exports.confirm_membership_cobot_subscription = function(req, res) {
 
     //Create New Member in TOCS-API from a new member being created on COBOT
     console.log("THEN DATAAAAAA...." + data)
-    console.log("THEN LENGTH...." + data.length)
+    console.log("THEN LENGTH...." + data)
+    console.log("Type OF...." + (typeof data));
     
     var member = new Member({
       name: data["name"],
