@@ -102,6 +102,7 @@ exports.confirm_membership_cobot_subscription = function(req, res) {
   console.log("THIS IS MY MEMBER DATA: ->\n" + memberData);
 
   const fetchedURL = req.body["url"]
+    console.log("Feteched URL: ->\n" + fetchedURL);
 
   // https://the-office-ro.cobot.me/api/memberships/dae9fc20daea2df5700de5d6755027d7
   const getNewMemberCobotAPIRequest = {
