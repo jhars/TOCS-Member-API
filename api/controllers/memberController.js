@@ -82,25 +82,8 @@ exports.subscribe_to_cobot_comfirm_membership_subscription = function(req, res) 
     
     rp(cobotSubscribeRequest).then(data => {
       console.log("---------- COBOT SUBSCRIBE REQUEST RESPONSE DATA: ---------- \n" + data)
-      
-      // var obj1;
 
-      // for (var property1 in data) {
-        
-      //   obj1 = data[property1];
-        
-      //   var member = new Member({
-      //     name: obj1["name"],
-      //     email: obj1["email"],
-      //     phone: obj1["phone"],
-      //     membership_plan: obj1["plan"]["name"]
-      //   })
-
-      //   console.log(member.name)
-      //   member.save()
-      // }
-
-      res.json(data)
+      res.json(member)
       // res.status(200)
 
     }).catch(err => {
@@ -114,9 +97,32 @@ exports.subscribe_to_cobot_comfirm_membership_subscription = function(req, res) 
 exports.confirm_membership_cobot_subscription = function(req, res) {
   const memberData = req.body
   console.log(memberData);
+  
+
+
+  var member = new Member({
+    name: data["name"],
+    email: data["email"],
+    phone: data["phone"],
+    membership_plan: obj1["plan"]["name"]
+  })
+
+  console.log(member.name)
+  member.save()
+
+
   res.json(memberData)
-  // Member.find({email: req.body.email}, function(err, member) {
-  // }
+  Member.find({email: member.email}, function(err, member) {
+    console.log("MEMBER DB OBJECT: " +member)
+
+    if (err) {
+      // res.status(400); // Bad Request
+      // res.status(401); // Unauthorized
+      // res.status(402); // payment required
+      // res.status(403);    // forbidden
+      res.send(err);     
+    }
+  })
 };
 
 // authenticate_member_ironwifi
