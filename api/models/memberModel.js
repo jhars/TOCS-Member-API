@@ -16,6 +16,10 @@ var MemberSchema = new Schema({
     type: String,
     required: 'Kindly enter the phone of the member'
   },
+  cobot_id: {
+    type: String,
+    required: 'Cobot Membership ID Required'
+  }
   membership_plan: {
     type: String,
     enum: [

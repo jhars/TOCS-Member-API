@@ -124,11 +124,24 @@ exports.confirm_membership_cobot_subscription = function(req, res) {
     // console.log(json);
 
     // let json = JSON.stringify(data);
-    let json = JSON.parse(data);
-    console.log(json);
+    // let json = JSON.parse(data);
+    // console.log(json);
+    console.log("========== Sanity Check #1 ==========")
     
-    console.log("MEMBER ID: " + json.id);
-    console.log("MEMBER EMAIL: " + json["email"]);
+    console.log("MEMBER ID: " + data["id"]);
+    console.log("MEMBER EMAIL: " + data["email"]);
+
+    console.log("========== Sanity Check #2 ==========")
+
+    var obj1;
+    for (var property1 in data) {
+      obj1 = data[property1];
+      console.log(obj1);
+      console.log("========== SANITY Check " + property1 + " ==========")
+    }
+
+    console.log("========== Sanit Check #3 ==========")
+
     
     // var member = new Member({
     //   name: data["name"],
