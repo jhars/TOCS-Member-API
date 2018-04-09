@@ -122,6 +122,7 @@ exports.confirm_membership_cobot_subscription = function(req, res) {
     // console.log("Type OF...." + object(data).;
 
     let json = JSON.stringify(data);
+    console.log(json);
     
     var member = new Member({
       name: data["name"],
