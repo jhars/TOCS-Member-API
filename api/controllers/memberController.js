@@ -121,36 +121,39 @@ exports.confirm_membership_cobot_subscription = function(req, res) {
     console.log("Type OF...." + (typeof data));
     // console.log("Type OF...." + object(data).;
 
+    console.log(json);
+
     // let json = JSON.stringify(data);
     let json = JSON.parse(data);
     console.log(json);
-    console.log(json["id"]);
-    console.log(json["email"]);
     
-    var member = new Member({
-      name: data["name"],
-      email: data["email"],
-      phone: data["phone"],
-      membership_plan: obj1["plan"]["name"]
-    })
+    console.log("MEMBER ID: " + json.id);
+    console.log("MEMBER EMAIL: " + json["email"]);
+    
+    // var member = new Member({
+    //   name: data["name"],
+    //   email: data["email"],
+    //   phone: data["phone"],
+    //   membership_plan: obj1["plan"]["name"]
+    // })
 
-    console.log("MEMBER NAME: " + member.name)
-    member.save()
+    // console.log("MEMBER NAME: " + member.name)
+    // member.save()
 
 
-    res.json(member)
+    // res.json(member)
 
-    Member.find({email: member.email}, function(err, member) {
-      console.log("MEMBER DB OBJECT: " + member)
+    // Member.find({email: member.email}, function(err, member) {
+    //   console.log("MEMBER DB OBJECT: " + member)
 
-      if (err) {
-        // res.status(400); // Bad Request
-        // res.status(401); // Unauthorized
-        // res.status(402); // payment required
-        // res.status(403);    // forbidden
-        res.send(err);     
-      }
-    })
+    //   if (err) {
+    //     // res.status(400); // Bad Request
+    //     // res.status(401); // Unauthorized
+    //     // res.status(402); // payment required
+    //     // res.status(403);    // forbidden
+    //     res.send(err);     
+    //   }
+    // })
 
 
   }).catch(err => {
