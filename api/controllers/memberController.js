@@ -5,6 +5,7 @@ const mongoose = require('mongoose'),
   request = require('request'),
   rp = require('request-promise');
 
+const bearerToken = "Bearer 4a0443d7ea815fb1404e65e07da04d2af54bd97a3ae33134b6aa8d03ffa79458"
 
 // ============== API METHODS ===================//
 
@@ -15,7 +16,7 @@ exports.fetch_all_members = function(req, res) {
   const cobotAllMembersAPIRequest = {
     url: "https://the-office-ro.cobot.me/api/memberships/",
     headers: {
-      "Authorization": "Bearer 99d6e5ea15c649d04cc99a563b36db74cd045421ecdb29a4c53f0e8ee9aaee46"
+      "Authorization": bearerToken
     },
     json: true
   }
@@ -70,7 +71,7 @@ exports.subscribe_to_cobot_comfirm_membership_subscription = function(req, res) 
       method: 'POST',
       uri: "https://the-office-ro.cobot.me/api/subscriptions/",
       headers: {
-        "Authorization": "Bearer 4a0443d7ea815fb1404e65e07da04d2af54bd97a3ae33134b6aa8d03ffa79458"
+        "Authorization": bearerToken
       },
       body: {
         "event": "confirmed_membership",
@@ -94,35 +95,60 @@ exports.subscribe_to_cobot_comfirm_membership_subscription = function(req, res) 
   };
 
 
+//COBOT sends "POST" request to this ROUTE
+
 exports.confirm_membership_cobot_subscription = function(req, res) {
   const memberData = req.body
   console.log(memberData);
+
+  const fetchedURL = memberData["url"]
+
+  // https://the-office-ro.cobot.me/api/memberships/dae9fc20daea2df5700de5d6755027d7
+  const getNewMemberCobotAPIRequest = {
+    url: fetchedURL,
+    headers: {
+      "Authorization": bearerToken
+    },
+    json: true
+  }
   
+  rp(getNewMemberCobotAPIRequest).then(data => {
+
+    //Create New Member in TOCS-API from a new member being created on COBOT
+
+    var member = new Member({
+      name: data["name"],
+      email: data["email"],
+      phone: data["phone"],
+      membership_plan: obj1["plan"]["name"]
+    })
+
+    console.log(member.name)
+    member.save()
 
 
-  var member = new Member({
-    name: data["name"],
-    email: data["email"],
-    phone: data["phone"],
-    membership_plan: obj1["plan"]["name"]
+    res.json(member)
+
+    Member.find({email: member.email}, function(err, member) {
+      console.log("MEMBER DB OBJECT: " + member)
+
+      if (err) {
+        // res.status(400); // Bad Request
+        // res.status(401); // Unauthorized
+        // res.status(402); // payment required
+        // res.status(403);    // forbidden
+        res.send(err);     
+      }
+    })
+
+
+  }).catch(err => {
+      // console.log("Houston we Have a Problem subscribing to Cobot WEBHOOK")
+      // console.log(err)
+    res.send(err)
   })
 
-  console.log(member.name)
-  member.save()
 
-
-  res.json(memberData)
-  Member.find({email: member.email}, function(err, member) {
-    console.log("MEMBER DB OBJECT: " +member)
-
-    if (err) {
-      // res.status(400); // Bad Request
-      // res.status(401); // Unauthorized
-      // res.status(402); // payment required
-      // res.status(403);    // forbidden
-      res.send(err);     
-    }
-  })
 };
 
 // authenticate_member_ironwifi
