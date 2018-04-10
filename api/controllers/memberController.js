@@ -86,42 +86,23 @@ exports.authenticate_member_ironwifi = function(req, res) {
     console.log("MEMBER: " + member);
 
     if (err) {
-      res.status(400); // Bad Request
+      // res.status(400); // Bad Request
       // res.status(401); // Unauthorized
       // res.status(402); // payment required
       // res.status(403);    // forbidden
-      res.send("ERROR #1 => " + err);      
+      // res.send("ERROR #1 => " + err);      
+      console.log("JH was here");
+      res.send(err)
     } else if (member.length == 0) {
       res.status(403);
       res.json("No TOCS/COBOT Members w/ with matching email");  
-    } else {
-      
-      // var obj1;
-      // for (var i in member) {
-        
-      //   const plan = member[i]['membership_plan'];
-      //   var msg;
-
-        // if (plan == 'Road Warrior' || plan == 'Small Business Membership') {
-        //   msg = "Welcome " + plan + " Member! \n the password for our faster, premium network is " + wifiPassword;
-          
-        //   res.status(200)
-        // } else {
-        //   msg = "Thanks for signing in! " + plan + " Member! Enjoy Free Wi-Fi!";
-        //   pswd = null
-        //   res.status(401); // Unauthorized
-        // }
-        // console.log("___________iteration logic object: " + i + "\n___________" + obj1); //need smarter logic for handling membership_plans
-        
-      // }
-
-      res.json({
-        message: msg,
-        password: pswd
-      });
-
-      // res.status(500)
     }
+
+    res.json({
+      message: msg,
+      password: pswd
+    });
+    
   });
 };
 
