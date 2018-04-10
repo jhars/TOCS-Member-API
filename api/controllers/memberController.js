@@ -88,7 +88,7 @@ exports.authenticate_member_ironwifi = function(req, res) {
       // res.status(401); // Unauthorized
       // res.status(402); // payment required
       // res.status(403);    // forbidden
-      res.send(err);      
+      res.send("ERROR #1 => " + err);      
     } else if (member.length == 0) {
       res.status(403);
       res.json("No TOCS/COBOT Members w/ with matching email");  
