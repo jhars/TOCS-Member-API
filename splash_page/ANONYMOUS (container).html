@@ -1,0 +1,73 @@
+<style>
+	#anonymousreg_container {
+		background-color: rgb(0, 0, 0, .85);
+		border: 5px solid rgba(255,255,255,.8);
+		border-radius: 25px;
+		border-image: url("https://www.unicefusa.org/sites/default/files/answer-box.png") 21 stretch;
+		
+		/*background-blend-mode: overlay;*/
+		/*border: ;*/
+		/*border-color: white;*/
+		/*margin-top: -100px;*/
+		text-align: center;
+		padding-top: 15px;
+		/*width:80%;*/
+		color: white;
+	}
+
+	#anonymousreg_access {
+		background-color: rgba(0,204,0);
+		border-color: green;
+		width: 60%;
+		height: 75px;
+		/*margin-top: -500px;*/
+		color: white;
+	}
+
+</style>
+
+<div id="anonymousreg_container">
+    <form id="anonymousreg_access_form" action="" onsubmit="anonymousreg(); return false;"
+          method="post">
+        <p><input type="checkbox" name="agree_tos"   onchange="document.getElementById('anonymousreg_access').disabled = !this.checked;" /> Agree with <a href="terms">Terms of Service</a></p>
+        <input type="submit" class="btn btn-info" id="anonymousreg_access" name="button" value="Accept Terms & Continue" disabled/>
+    </form>
+</div>
+
+
+
+
+<style>
+	#anonymousreg_container {
+		background-color: rgb(0, 0, 0, .85);
+		border: 5px solid rgba(255,255,255,.8);
+		border-radius: 25px;
+		border-image: url("https://www.unicefusa.org/sites/default/files/answer-box.png") 21 stretch;
+		/*background-blend-mode: overlay;*/
+		/*border: ;*/
+		/*border-color: white;*/
+		/*margin-top: -100px;*/
+		text-align: center;
+		padding-top: 15px;
+		/*width:80%;*/
+		color: white;
+	}
+
+	#anonymousreg_access {
+		background-color: rgba(0,204,0);
+		border-color: green;
+		width: 60%;
+		height: 75px;
+		/*margin-top: -500px;*/
+		color: white;
+	}
+
+</style>
+
+<div id="anonymousreg_container">
+    <form id="anonymousreg_access_form" action="" onsubmit="anonymousreg(); return false;"
+          method="post">
+        <p><input type="checkbox" name="agree_tos"   onchange="document.getElementById('anonymousreg_access').disabled = !this.checked;" /> Agree with <a href="terms">Terms of Service</a></p>
+        <input type="submit" class="btn btn-info" id="anonymousreg_access" name="button" value="Accept Terms & Continue" disabled/>
+    </form>
+</div>

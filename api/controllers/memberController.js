@@ -3,10 +3,22 @@
 const mongoose = require('mongoose'),
   Member = mongoose.model('Members'),
   request = require('request'),
-  rp = require('request-promise');
+  rp = require('request-promise'),
+  path = require("path");
 
 const bearerToken = "Bearer 4a0443d7ea815fb1404e65e07da04d2af54bd97a3ae33134b6aa8d03ffa79458"
 var pswd = "Grand Circus"
+
+// ======================================
+// STATUS KEY:
+// ===========
+// res.status(400); // Bad Request
+// res.status(401); // Unauthorized
+// res.status(402); // payment required
+// res.status(403);    // forbidden
+// ======================================
+
+
 
 // ============== API METHODS ===================//
 //_________________________________________________________________
@@ -24,6 +36,127 @@ exports.list_all_members = function(req, res) {
   })
 };
 
+
+//_______________________________________________________________
+// GET - Route to SHOW Form to enter Email
+// -> to get = secret pw to access Premium/Paif Network
+//=> done by checking against email, once already logged into free network)
+
+exports.confirmPremiumMembership = function(req, res) {
+  // res.sendFile(root);
+  // res.send(root.path.join("/memberEmailForm.html"));
+  res.sendFile(path.join(__dirname + '/memberEmailForm.html'));
+  // app.use(express.staticProvider(__dirname + '/public'));
+  // res.sendFile('.././memberEmailForm.html');
+  // var members = require('../controllers/memberController');
+};
+
+
+//_______________________________________________________________
+// POST - Route setup for Captive-Portal REST-Auth tool to hit.
+// ...this is the 'gateway' to premium network
+
+// authenticate_member_ironwifi
+exports.authenticate_member_ironwifi = function(req, res) {
+
+  var msg;
+  var er;
+  var code;
+
+  console.log("_________Request Details_________");
+  console.log(req.body);
+  
+  Member.find({email: req.body.email}, function(err, member) {
+
+    console.log("MEMBER LENGTH: " + member.length);
+
+    if (err) {
+      msg = "No TOCS/COBOT Members w/ with matching email 01"
+      pswd = null
+      code = 400 // Bad Request
+      er = err
+      res.status(400)
+
+    } else if (member.length == 0) {
+      msg = "No TOCS/COBOT Members w/ with matching email 02"
+      pswd = null
+      code = 403 // No Matching Email
+      er = err
+      res.status(403)
+
+    } else {
+      
+      var obj1;
+      for (var i in member) {
+        const plan = member[i]['membership_plan'];
+        
+        if (plan == 'Road Warrior' || plan == 'Small Business Membership') {
+          // res.send(err);
+          // res.end();     
+          msg = "Welcome " + plan + " Member! \n the password for our faster, premium network is: ";
+          code = 200
+          er = err
+
+        
+        } else {
+          msg = "Thanks for signing in! " + plan + " Member! Enjoy Free Wi-Fi!";
+          pswd = null
+          er = err
+          code = 401 // User Email IS a Member -- BUT NOT AUTHORIZED
+          res.status(401);
+
+        } // ENDS COBOT Membership+Plan Logic
+        
+        //need smarter logic for handling membership_plans
+        console.log("___________iteration logic object: " + i + "\n___________" + obj1);
+      }
+      
+    } // ENDS -- if(err)
+
+    if (code == 200) {
+      
+      
+      
+      // res.status(200)
+
+      // res.json({
+      //   message: msg,
+      //   password: pswd,
+      //   response_code: code,
+      //   error: er
+      // });
+
+      let confirm_email_page = __dirname + "/confirm_email.html";
+      res.sendFile(confirm_email_page);
+
+    } else if (code < 500) {
+
+      res.json({
+        message: msg,
+        password: pswd,
+        response_code: code,
+        error: er
+      });
+
+    } else {
+      
+
+      res.status(500)
+
+      res.json({
+        message: msg,
+        password: pswd,
+        response_code: 500,
+        error: er
+      });
+    }
+
+
+
+  }); // ENDS -- Member.Find({})
+}; // ENDS -- /signin/rest POSt Route
+
+
 //_________________________________________________________________
 // POST -  .find {Member by:EMAIL}
 exports.find_member_by_email = function(req, res) {
@@ -38,8 +171,8 @@ exports.find_member_by_email = function(req, res) {
       // res.status(403);    // forbidden
       res.send(err);      
     } else if (member.length == 0) {
-      res.status(403);
-      res.json("No TOCS/COBOT Members w/ with matching email");  
+      // res.status(403);
+      res.json("No TOCS/COBOT Members w/ with matching email 02");  
     } else {
       
       var obj1;
@@ -70,39 +203,6 @@ exports.find_member_by_phone = function(req, res) {
     if (err)
       res.send(err);
     res.json(member);
-  });
-};
-
-
-//_______________________________________________________________
-// POST - Route setup for Captive-Portal REST-Auth tool to hit.
-// ...this is the 'gateway' to premium network
-
-// authenticate_member_ironwifi
-exports.authenticate_member_ironwifi = function(req, res) {
-  
-  Member.find({email: req.body.email}, function(err, member) {
-
-    console.log("MEMBER: " + member);
-
-    if (err) {
-      // res.status(400); // Bad Request
-      // res.status(401); // Unauthorized
-      // res.status(402); // payment required
-      // res.status(403);    // forbidden
-      // res.send("ERROR #1 => " + err);      
-      console.log("JH was here");
-      res.send(err)
-    } else if (member.length == 0) {
-      res.status(403);
-      res.json("No TOCS/COBOT Members w/ with matching email");  
-    }
-
-    res.json({
-      message: msg,
-      password: pswd
-    });
-    
   });
 };
 
@@ -211,45 +311,8 @@ exports.confirm_membership_cobot_subscription = function(req, res) {
 
 };
 
-//_______________________________________________________________
-// POST - Route setup for Captive-Portal REST-Auth tool to hit.
-// ...this is the 'gateway' to premium network
 
-// authenticate_member_ironwifi
-exports.authenticate_member_ironwifi = function(req, res) {
-  Member.find({email: req.body.email}, function(err, member) {
 
-    if (err) {
-      res.status(400); // Bad Request
-      // res.status(401); // Unauthorized
-      // res.status(402); // payment required
-      // res.status(403);    // forbidden
-      res.send(err);      
-    } else if (member.length == 0) {
-      res.status(403);
-      res.json("No TOCS/COBOT Members w/ with matching email");  
-    } else {
-      
-      var obj1;
-      for (var i in member) {
-
-        const plan = member[i]['membership_plan'];
-
-        if (plan == 'Road Warrior' || plan == 'Small Business Membership') {
-          // res.json("Access to Premimum WiFi Granted");
-          res.status(200)
-        } else {
-          res.status(401); // Unauthorized
-        }
-
-        console.log(obj1); //need smarter logic for handling membership_plans
-      }
-
-      res.json(member);
-    }
-  
-  });
-};
 
 // ######################################################################## //
 // ########################### DO NOT CALL THIS ROUTE ##################### //

@@ -28,7 +28,8 @@
     "mongoose": "^5.0.12",
     "promise": "^8.0.1",
     "request": "^2.85.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "underscore": "^1.8.3"
   },
   "engines": {
     "node": "8.2.1"

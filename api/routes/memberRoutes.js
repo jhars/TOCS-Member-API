@@ -25,4 +25,8 @@ module.exports = function(app) {
   app.route('/member/confirm')
     .get(members.subscribe_to_cobot_comfirm_membership_subscription)
     .post(members.confirm_membership_cobot_subscription)
+
+  app.route('/tocs_wf_pw')
+    .get(members.confirmPremiumMembership)
+
 };
