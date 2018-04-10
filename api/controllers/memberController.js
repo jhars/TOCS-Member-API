@@ -83,6 +83,8 @@ exports.authenticate_member_ironwifi = function(req, res) {
   
   Member.find({email: req.body.email}, function(err, member) {
 
+    console.log("MEMBER: " + member);
+
     if (err) {
       res.status(400); // Bad Request
       // res.status(401); // Unauthorized
@@ -94,30 +96,31 @@ exports.authenticate_member_ironwifi = function(req, res) {
       res.json("No TOCS/COBOT Members w/ with matching email");  
     } else {
       
-      var obj1;
-      for (var i in member) {
+      // var obj1;
+      // for (var i in member) {
         
-        const plan = member[i]['membership_plan'];
-        var msg;
+      //   const plan = member[i]['membership_plan'];
+      //   var msg;
 
-        if (plan == 'Road Warrior' || plan == 'Small Business Membership') {
-          msg = "Welcome " + plan + " Member! \n the password for our faster, premium network is " + wifiPassword;
+        // if (plan == 'Road Warrior' || plan == 'Small Business Membership') {
+        //   msg = "Welcome " + plan + " Member! \n the password for our faster, premium network is " + wifiPassword;
           
-          res.status(200)
-        } else {
-          msg = "Thanks for signing in! " + plan + " Member! Enjoy Free Wi-Fi!";
-          pswd = null
-          res.status(401); // Unauthorized
-        }
-        console.log("___________iteration logic object: " + i + "\n___________" + obj1); //need smarter logic for handling membership_plans
-      }
+        //   res.status(200)
+        // } else {
+        //   msg = "Thanks for signing in! " + plan + " Member! Enjoy Free Wi-Fi!";
+        //   pswd = null
+        //   res.status(401); // Unauthorized
+        // }
+        // console.log("___________iteration logic object: " + i + "\n___________" + obj1); //need smarter logic for handling membership_plans
+        
+      // }
 
       res.json({
         message: msg,
         password: pswd
       });
 
-      res.status(500)
+      // res.status(500)
     }
   });
 };
