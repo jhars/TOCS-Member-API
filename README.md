@@ -1,3 +1,19 @@
+
+
+SYSTEM ARCHITECTURE:
+
+A] UNIFI Controller
+
+B] IRON WI-FI Captive Portal
+
+C] TOCS (Custom) API (Web-App + Database)
+
+D] COBOT Member API
+
+E] WP Landing Page
+
+
+
 Steps:
 
 ___________
@@ -62,3 +78,8 @@ Splash Page Design
 		1) use kendra design
 		2) iframe
 		3) Use Thrive Architect for Splash Page
+
+
+
+
+
