@@ -5,7 +5,30 @@
         <title>TOCS Membership Confirmation</title>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <style>
+            #main-div {
+                text-align: center;
+            }
 
+            #header {
+                /*width:60%;*/
+            }
+
+            #header h4 {
+                /*width:60%;*/
+                font-size: 14px;
+            }
+
+            #email {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            #req-access-btn {
+                width: 100%;
+            }
+
+        </style>
     </head>
     <body>
         <div id="contact">
@@ -15,21 +38,27 @@
                 <div class="row"></div>
 
                 <div class="col-md-3"></div>
-                <div class="col-md-6">
-                    <h1>Confirm Membership</h1>
-                    <h2>Preimum (Road Warrior or Small-Business Members Sign-In Below:</h2>
+                <div id="main-div" class="col-md-6">
+                    <div id="header">
+                        <h1>Confirm Membership</h1>
+                        <h4>Road Warrior or Small-Business (Premium) Members</h4>
+                        <h4>Sign-In Below:</h4>    
+                    </div>
                     
+
                     <form action="/signin/rest" method="post">
                         <fieldset>
 
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" placeholder="Enter your email address" />
+                            <!-- <label for="email">Email:</label><br> -->
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" /><br>
 
-                            <input type="submit" value="Request Access" />
+                            <input id="req-access-btn" type="submit" value="Request Access" />
 
                         </fieldset>
                     </form>
                     
+                    <h6>If you are not a Road Warrior or Small Business Membership yet, you can <a href="https://the-office-ro.cobot.me/">SIGN UP</a> for a PREMIUM Membership to gain acces to more bandwidth!</h6>
+
                 </div>
 
                 <div class="col-md-3"></div>
