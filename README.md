@@ -12,7 +12,20 @@ D] COBOT Member API
 
 E] WP Landing Page
 
+DONE:
+-clean & test splash page
+-clean up Premium Wifi on Landing Page
 
+ToDo:
+
+
+
+-min style to email Confimr
+
+-create "comp" {NOT AUTHORIZED HTML RESPONSE PAGE}
+
+-Provide Update Password Instructions
+-Update Password Instructions (Page Design)
 
 Steps:
 

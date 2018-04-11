@@ -16,55 +16,58 @@
 		<style type="text/css">
 
 			body {
-				background-image: url('https://i.imgur.com/4QXnEFA.jpg');
-				background-repeat: repeat;
+				background: linear-gradient(#009900, #32AD32, #195619);
+				background-size: 120%;
 			}
 
 			.intro-section {
-				padding-top:30px;
+				padding-top:10px;
 				color: white;
-				width: 100%;
 			}
 
-			#free-wifi-header {
+			h3#free-wifi-header {
 				color: #fff;
 				font-family: Arial, Helvetica, sans-serif;
-				padding-bottom: 30px;
 				text-align: center;
+				font-size: 24px; 
+			}
+
+			h4 {
+				color: #fff;
+				font-family: Arial, Helvetica, sans-serif;
+				text-align: center;
+				font-size: 14px;
 			}
 
 			#free-wifi-header strong {
 				text-decoration: underline;		
 			}
 
-			#img-div {
+			#all-img-div {
 				background-color: rgba(255,255,255,.3);
-				background-
-				z-index: -1;
-				border: 36px solid rgba(255,255,255,.85);
-				border-radius: 30px;
-				border-image: url("https://i.imgur.com/95e8i9H.png") 21 stretch;
+				border: 14px solid rgba(255,255,255,.85);
+				border-radius: 20px;
+				width: 50%;
 			}
 
 			.portal-image {
-				width: 109%;
-				margin-left: -20px;
-				margin-top: -10px;
-				margin-bottom: -25px;
-				padding:0px;
-				margin-right:5px;
+				width: 100%;
 			}
 
-			#img-top-div {}
+			#img-top-div {
+				/*height: 22px;*/
+			}
 			
 			.portal-image-top {
-				height: 180px;
+				/*width:100%;*/
 			}
 
-			#img-bottom-div {}
+			#img-bottom-div {
+				/*height: 130px;*/
+			}
 			
 			.portal-image-bottom {
-				height: 400px;
+				/*width:100%;*/
 			}
 
 			#portal-square-1 {}
@@ -72,12 +75,20 @@
 			#portal-square-3 {}
 			#portal-square-4 {}
 
-
-			.chalk-border {
-				width:100%;
+/*			.chalk-border {
+				border: 36px solid rgba(255,255,255,.85);
+				border-radius: 30px;
 			}
 			.chalk-border:before {
 			  content: '';
+			}*/
+			.col-xs-6 {
+				padding:0px;
+			}
+
+			.container {
+				/*padding-bottom: 3px;*/
+				margin-bottom: -20px;
 			}
 		
 		</style>
@@ -86,34 +97,48 @@
 
 <body data-spy="scroll" data-target=".navbar-fixed-top" id="page-top" style="background-color: #00cc44;">
 	<div align="center"></div>
-	<h2 id="free-wifi-header"><strong>Free Wi-Fi</strong> Service brought to you by:</h2>
+	<h3 id="free-wifi-header"><strong>Free Wi-Fi</strong></h3>
+	<h4>Service brought to you by</h4>
 
-	<div id="img-div" class="container">
+	<div id="all-img-div" class="container">
 
 <!-- ========== TOP ROW ========== -->
 		<div class="row img-top-div">
-			<div class="col-md-6">
-				<img id="" class="portal-image portal-image-top col-xs-6" src="https://i.imgur.com/ywaRpwH.png">
+			<!-- <div class="col-xs-2"></div> -->
+			
+			<div class="col-xs-6">
+				<img  class="portal-image portal-image-top" src="https://i.imgur.com/ywaRpwH.png">
 			</div>
 				
-			<div class="col-md-6">
-				<img id="portal-square-2" class="portal-image portal-image-top col-xs-6" src="https://i.imgur.com/4InsvQx.png">
+
+			<div class="col-xs-6">
+				<img id="portal-square-2" class="portal-image portal-image-top" src="https://i.imgur.com/4InsvQx.png">
 			</div>
+			
+			<!-- <div class="col-xs-2"></div> -->
 		</div>
 
 <!-- ========== BOTTOM ROW ========== -->
 		<div class="row img-bottom-div">
-			<div class="col-md-6">
-				<img id="portal-square-3" class="portal-image portal-image-bottom col-xs-6" src="https://i.imgur.com/RTI7YBr.png">
+			<!-- <div class="col-xs-2"></div> -->
+
+			<div class="col-xs-6">
+				<img id="portal-square-3" class="portal-image portal-image-bottom" src="https://i.imgur.com/RTI7YBr.png">
 			</div>
 
-			<div class="col-md-6">
-				<img id="portal-square-4" class="portal-image portal-image-bottom col-xs-6" src="https://i.imgur.com/RTI7YBr.png">
+			<div class="col-xs-6">
+				<img id="portal-square-4" class="portal-image portal-image-bottom" src="https://i.imgur.com/RTI7YBr.png">
 			</div>
+
+			<!-- <div class="col-xs-2"></div> -->
 		</div>
 
 <!-- %%%%%%%% CHALK BORDER %%%%%%%% -->
-		<div class="chalk-border"></div>
+		<!-- <div class="chalk-border"></div> -->
+
+		<!-- <div class="row">
+			<div id="anonymousreg_placeholder" class="col-xs-12"></div>
+		</div> -->
 	</div>
 
 	&nbsp;

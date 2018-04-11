@@ -77,12 +77,18 @@ exports.authenticate_member_ironwifi = function(req, res) {
       er = err
       res.status(400)
 
+      let unconfirmed_email_page = __dirname + "/unconfirmed_email.html";
+      res.sendFile(unconfirmed_email_page);
+
     } else if (member.length == 0) {
       msg = "No TOCS/COBOT Members w/ with matching email 02"
       pswd = null
       code = 403 // No Matching Email
       er = err
       res.status(403)
+
+      let unconfirmed_email_page = __dirname + "/unconfirmed_email.html";
+      res.sendFile(unconfirmed_email_page);
 
     } else {
       
@@ -129,26 +135,28 @@ exports.authenticate_member_ironwifi = function(req, res) {
       let confirm_email_page = __dirname + "/confirm_email.html";
       res.sendFile(confirm_email_page);
 
-    } else if (code < 500) {
+    // } else if (code < 500) {
 
-      res.json({
-        message: msg,
-        password: pswd,
-        response_code: code,
-        error: er
-      });
+    //   res.json({
+    //     message: msg,
+    //     password: pswd,
+    //     response_code: code,
+    //     error: er
+    //   });
 
     } else {
       
+      let unconfirmed_email_page = __dirname + "/unconfirmed_email.html";
+      res.sendFile(unconfirmed_email_page);
 
-      res.status(500)
+      // res.status(500)
 
-      res.json({
-        message: msg,
-        password: pswd,
-        response_code: 500,
-        error: er
-      });
+      // res.json({
+      //   message: msg,
+      //   password: pswd,
+      //   response_code: 500,
+      //   error: er
+      // });
     }
 
 
