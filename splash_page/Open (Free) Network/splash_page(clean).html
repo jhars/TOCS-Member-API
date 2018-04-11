@@ -27,7 +27,7 @@
 			 top:0;
 			 bottom:0;*/
 			 
-			 width: 144%;
+/*			 width: 144%;
 
 			 
 			 height: 815px;
@@ -36,19 +36,20 @@
 			 border-radius: 30px;
 
 			 transform: scale(0.7); 
-			 transform-origin: 0 0;
+			 transform-origin: 0 0;*/
+			 /*background-image: url('https://i.imgur.com/oo9iZTS.png');*/
 
 			}
 
 			
 
 			.chalk-border {
-			  border: 82px solid rgba(255,255,255,.8);
-			  border-image: url("https://www.unicefusa.org/sites/default/files/answer-box.png") 21 stretch;
-			  height: 620px;
-			  margin-top: -845px;
+			  /*border: 82px solid rgba(255,255,255,.8);
+			  border-image: url("https://i.imgur.com/95e8i9H.png") 21 stretch;
+			  height: 600px;
+			  margin-top: -450;
 			  margin-left: -60px;
-			  margin-right: -45px;
+			  margin-right: -45px;*/
 
 			}
 
@@ -73,15 +74,67 @@
 				/*font-weight: bold;*/
 				padding-bottom: 30px;
 				text-align: center;
+				/*background-image: url('https://i.imgur.com/oo9iZTS.png');*/
 
 			}
 
 			#free-wifi-header strong {
 				text-decoration: underline;		
+				
 			}
 
 			#anonymousreg_access {
 
+			}
+
+			#img-div {
+				/*width: 100%;*/
+
+				/*height: 540px;*/
+				z-index: -1;
+				border: 36px solid rgba(255,255,255,.85);
+				border-radius: 30px;
+
+				/*border: 82px solid rgba(255,255,255,.8);*/
+				border-image: url("https://i.imgur.com/95e8i9H.png") 21 stretch;
+				/*height: 600px;*/
+
+				/*transform: scale(0.7); 
+				transform-origin: 0 0;*/
+
+
+			}
+
+			#img-top-div {
+
+			}
+
+			.portal-image {
+				width: 115%;
+				/*width:100%;*/
+				margin-left: -35px;
+				margin-top: -10px;
+				margin-bottom: -20px;
+			}
+
+			#portal-square-1 {
+				height: 180px;
+			}
+
+			#portal-square-2 {
+				height: 180px;
+			}
+
+			#portal-square-3 {
+				/*height: 600px;*/
+				/*height: 80%;*/
+				height: 400px;
+			}
+
+			#portal-square-4 {
+				/*height: 600px;*/
+				/*height: 80%;*/
+				height: 400px;
 			}
 		
 		</style>
@@ -93,22 +146,60 @@
 
 		<!-- <section class="intro-section" id="intro"> -->
 
-			<div class="container">
-				
+			<!-- <div class="container">
 				<div class="row">
-					<!-- <div class="col-sm-1"></div> -->
-					<div class="col-xs-12">
+					<div class="col-xs-12"> -->
 						
 						
 						<h2 id="free-wifi-header"><strong>Free Wi-Fi</strong> Service brought to you by:</h2>
-						
-								<iframe id="iframe-bg" scrolling="no" src="https://www.theofficecoffeeshop.com/547-2/free-network-splash-page-partner-marketing-content" style="text-align: left;"></iframe>
 
-						<div class="chalk-border"></div>
+
+						<div id="img-div" class="container">
+
+							<div class="row img-top-div">
+
+								
+								<div class="col-md-6">
+									<img id="portal-square-1" class="portal-image col-xs-6" src="https://i.imgur.com/ywaRpwH.png">
+								</div>
+									
+								<div class="col-md-6">
+									<img id="portal-square-2" class="portal-image col-xs-6" src="https://i.imgur.com/4InsvQx.png">
+								</div>
+								
+								
+							</div>
+
+
+							<div class="row img-bottom-div">
+								
+								<div class="col-md-6">
+									<img id="portal-square-3" class="portal-image col-xs-6" src="https://i.imgur.com/RTI7YBr.png">
+								</div>
+								<div class="col-md-6">
+									<img id="portal-square-4" class="portal-image col-xs-6" src="https://i.imgur.com/RTI7YBr.png">
+								</div>
+							
+							</div>
+							
+							<div class="chalk-border"></div>
+						</div>
+
+						
+								<!-- <iframe id="iframe-bg" scrolling="no" src="https://www.theofficecoffeeshop.com/547-2/free-network-splash-page-partner-marketing-content" style="text-align: left;"></iframe> -->
+
+								<!-- <iframe id="iframe-bg" scrolling="no" src="https://www.google.com" style="text-align: left;"></iframe> -->
+								
+
+						
 
 						&nbsp;
 
-						
+						<div>
+							<a href="http://tocs-api.herokuapp.com/tocs_wf_pw">
+								Preimum Member? Click Here
+							</a>
+						</div>
 						
 						<div id="anonymousreg_placeholder"></div>
 						<div id="rest_placeholder"></div>
@@ -117,11 +208,9 @@
 						<div id="status_placeholder"></div>
 						<div id="error_placeholder"></div>
 
-					</div>
-					<!-- <div class="col-sm-1"></div> -->
-				
+<!-- 					</div>
 				</div>
-			</div>
+			</div> -->
 		<!-- </section> -->
 
 		<p>
