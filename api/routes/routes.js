@@ -22,18 +22,15 @@ module.exports = function(app) {
     .get(members.subscribe_to_cobot_comfirm_membership_subscription)
     .post(members.confirm_membership_cobot_subscription)
 
-  app.route('/tocs_wf_pw') //this is a bad naming conventions
+  app.route('/tocs_wf_pw') //bad naming conventions
     .get(members.confirmPremiumMembership)
 
   app.route('/premium_wifi_pw_mgmt/:network_name')
     .get(wifi.wifi_pw_manager)
     .post(wifi.update_wifi_pw)
     
-
   app.route('/premium_wifi/password')
     .get(wifi.fetch_current_pw)
-    .post(wifi.create_wifi_pw) //tjhis is going to require some major editing
-
-
+    .post(wifi.create_wifi_pw)
 
 };

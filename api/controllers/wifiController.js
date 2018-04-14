@@ -1,10 +1,11 @@
 'use strict';
-
+// ######################################################## //
 const mongoose = require('mongoose'),
   Wifi = mongoose.model('Wifis'), //SHOULD BE 'SSID'
   request = require('request'),
   rp = require('request-promise'),
   path = require("path");
+// ######################################################## //
 
 //_______________________________________________________________
 // POST - Route to CREATE Password for Iron Wifi Premimum Network
@@ -25,14 +26,10 @@ exports.create_wifi_pw = function (req, res) {
 
 	res.json(wifi)
 }
+
 //_______________________________________________________________
 // GET - Route to getch CURRENT WIFI PASSWORD
-
 exports.fetch_current_pw = function (req, res) {
-	
-	// let network = req.query["network_name"];
-	// console.log("#1 Network from URL ? QUERY = ... " + network);
-	console.log("#4 Req.Params = ... " + req.params);
 
 	//HARD CODING network name here________//
 	Wifi.findOne({network_name: "TheOfficeCoffeeShop_VIP"}, function(err, ssid) {
@@ -43,10 +40,7 @@ exports.fetch_current_pw = function (req, res) {
 		} else {
 			res.json(ssid)
 		}
-		
 	});
-
-	// console.log(" #2 Network from URL ? QUERY = ... " + network);
 }
 
 //_______________________________________________________________
@@ -57,9 +51,6 @@ exports.update_wifi_pw = function (req, res) {
 
 		let password = req.body['pw']
 		let networkName = req.params['network_name']
-		console.log(password);
-		console.log(networkName);
-		// let password = "My NewP$$sword$$$$";
 		var newvalues = { $set: { pw: password } };
 
 	Wifi.findOneAndUpdate({network_name: networkName}, newvalues, {new: true}, function(err, ssid) {
@@ -74,8 +65,6 @@ exports.update_wifi_pw = function (req, res) {
 	});
 }
 
-
-
 //_______________________________________________________________
 // GET - Route to View Password Manager HTML Page
 exports.wifi_pw_manager = function (req, res) {
@@ -83,20 +72,15 @@ exports.wifi_pw_manager = function (req, res) {
 	let urlParams = req.params["network_name"];
 	console.log("PARAMS #1 => " + JSON.stringify(urlParams));
 
-
  	Wifi.findOne({network_name: urlParams}, function(err, network) {
- 		// console.log("#3 Wifi ? NETWORK PASSWORD =>  " + network["pw"]);
  		console.log("#3 -------- END ---------------- #3");
 	});
-
 
 	let view = path.join(__dirname + '/managePassword.html');
 	res.sendFile(view);
 }
 
-
 //_______________________________________________________________
-
 // ######################################################################## //
 // ######################################################################## //
 // ######################################################################## //
