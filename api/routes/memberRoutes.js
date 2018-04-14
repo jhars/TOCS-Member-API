@@ -26,7 +26,11 @@ module.exports = function(app) {
     .get(members.subscribe_to_cobot_comfirm_membership_subscription)
     .post(members.confirm_membership_cobot_subscription)
 
-  app.route('/tocs_wf_pw')
+  app.route('/tocs_wf_pw') //this is a bad naming conventions
     .get(members.confirmPremiumMembership)
+
+  app.route('/premium_wifi_pw_mgmt')
+    .get(members.wifi_pw_manager)
+    .update(members.update_wifi_pw)
 
 };
