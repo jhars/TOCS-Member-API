@@ -84,7 +84,7 @@ exports.wifi_pw_manager = function (req, res) {
 
 
  	Wifi.findOne({network_name: urlParams}, function(err, network) {
- 		console.log("#3 Wifi ? NETWORK PASSWORD =>  " + network.pw);
+ 		console.log("#3 Wifi ? NETWORK PASSWORD =>  " + network["pw"]);
  		console.log("#3 -------- END ---------------- #3");
 	});
 
