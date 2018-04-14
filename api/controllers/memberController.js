@@ -41,17 +41,17 @@ exports.list_all_members = function(req, res) {
 
 //_______________________________________________________________
 // GET - Route to View Password Manager HTML Page
-exports.wifi_pw_manager = function (req, res) {
+// exports.wifi_pw_manager = function (req, res) {
 
-  res.sendFile(path.join(__dirname + '/managePassword.html'));
-}
+//   res.sendFile(path.join(__dirname + '/managePassword.html'));
+// }
 
 
 //_______________________________________________________________
 // POST - Route to update the Wifi Password (that is displayed to premium members)
-exports.update_wifi_pw = function (req, res) {
+// exports.update_wifi_pw = function (req, res) {
 
-}
+// }
 
 
 //_______________________________________________________________

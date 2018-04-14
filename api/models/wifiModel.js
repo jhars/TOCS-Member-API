@@ -2,7 +2,6 @@
 const mongoose = require('mongoose'),
   Schema = mongoose.Schema;;
 
-
 var WifiSchema = new Schema({
   network_name: {
     type: String,
@@ -15,12 +14,12 @@ var WifiSchema = new Schema({
   SSID_type: {
     type: String,
     enum: [
-      'Wireless Network',
+      'Wireless',
       'VLAN',
       'WLAN',
       'Site/Location'
-    ],
-    required: "[ 'Wireless Network','VLAN','WLAN','Site/Location']"
+    ]
+    // required: "[ 'Wireless','VLAN','WLAN','Site/Location']"
   },
   pw: {
     type: String
@@ -28,7 +27,7 @@ var WifiSchema = new Schema({
   manufacturer: {
     type: String,
     enum: [
-      'Iron Wifi',
+      'Iron',
       'UNIFI'
     ]
   },
@@ -38,4 +37,4 @@ var WifiSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model('Wifi', WifiSchema);
+module.exports = mongoose.model('Wifis', WifiSchema);
