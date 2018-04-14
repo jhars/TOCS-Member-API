@@ -80,9 +80,9 @@
 			 
 
 				render: function (data) {
-				 var $templateHtml = $(templateController.template(data));
-				 console.log("Logging $templateHTML: " + $templateHtml)
-			 	$('#data-placeholder').append($templateHtml);
+				 	var $templateHtml = $(templateController.template(data));
+				 	console.log("Logging $templateHTML: " + $templateHtml)
+			 		$('#data-placeholder').append($templateHtml);
 				},
 
 			//setup view on home page
@@ -91,10 +91,10 @@
 			     type: 'GET',
 			     url: '/premium_wifi/password',
 			     success: function (data) {
-			     	// let testObj = data;
-			      // console.log(testObj);
+			     	let obj = data;
+			      console.log(obj);
 			      // testController.render(testObj);
-			      templateController.render(data);
+			      templateController.render(obj);
 
 			     }
 			   })

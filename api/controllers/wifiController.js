@@ -30,22 +30,23 @@ exports.create_wifi_pw = function (req, res) {
 
 exports.fetch_current_pw = function (req, res) {
 	
-	let network = req.query["network_name"];
-	console.log("#1 Network from URL ? QUERY = ... " + network);
+	// let network = req.query["network_name"];
+	// console.log("#1 Network from URL ? QUERY = ... " + network);
+	console.log("#4 Req.Params = ... " + req.params);
 
 	//HARD CODING network name here________//
-	Wifi.findOne({network_name: network}, function(err, ssid) {
-		console.log("SSID: " + ssid);
+	Wifi.findOne({network_name: "TheOfficeCoffeeShop_VIP"}, function(err, ssid) {
+		console.log("SSID: " + ssid["pw"]);
 		
 		if (err) {
 			res.send(err)
 		} else {
-			res.json(ssid)	
+			res.json(ssid)
 		}
 		
 	});
 
-	console.log(" #2 Network from URL ? QUERY = ... " + network);
+	// console.log(" #2 Network from URL ? QUERY = ... " + network);
 }
 
 //_______________________________________________________________
