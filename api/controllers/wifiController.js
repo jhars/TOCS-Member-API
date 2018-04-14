@@ -35,7 +35,7 @@ exports.fetch_current_pw = function (req, res) {
 
 	//HARD CODING network name here________//
 	Wifi.findOne({network_name: network}, function(err, ssid) {
-		console.log("SSID: " + ssid['pw']);
+		console.log("SSID: " + ssid);
 		
 		if (err) {
 			res.send(err)
