@@ -36,7 +36,7 @@ app.use(express.static('/'));
 // const memberRoutes = require('./api/routes/memberRoutes');
 // const wifiRoutes = require('./api/routes/wifiRoutes');
 
-const routes = require('./api/routes/memberRoutes'); //importing route
+const routes = require('./api/routes/routes'); //importing route
 routes(app); //register the route
 
 app.use(function(req, res) {

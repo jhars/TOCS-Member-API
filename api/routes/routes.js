@@ -25,14 +25,15 @@ module.exports = function(app) {
   app.route('/tocs_wf_pw') //this is a bad naming conventions
     .get(members.confirmPremiumMembership)
 
-  app.route('/premium_wifi_pw_mgmt/')
-    
+  app.route('/premium_wifi_pw_mgmt/:network_name')
     .get(wifi.wifi_pw_manager)
-    .put(wifi.update_wifi_pw)
+    .post(wifi.update_wifi_pw)
+    
 
-  app.route('/premium_wifi/current_password')
+  app.route('/premium_wifi/password')
     .get(wifi.fetch_current_pw)
     .post(wifi.create_wifi_pw) //tjhis is going to require some major editing
+
 
 
 };
