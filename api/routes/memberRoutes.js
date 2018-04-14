@@ -1,6 +1,7 @@
 'use strict';
 module.exports = function(app) {
   var members = require('../controllers/memberController');
+  var wifi = require('../controllers/wifiController');
 
   // todoList Routes
   app.route('/members')
@@ -30,7 +31,9 @@ module.exports = function(app) {
     .get(members.confirmPremiumMembership)
 
   app.route('/premium_wifi_pw_mgmt')
-    .get(members.wifi_pw_manager)
-    .update(members.update_wifi_pw)
+    .post(wifi.create_wifi_pw)
+    .get(wifi.wifi_pw_manager)
+    .put(wifi.update_wifi_pw)
+
 
 };

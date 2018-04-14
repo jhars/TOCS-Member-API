@@ -6,10 +6,11 @@ const mongoose = require('mongoose'),
 var WifiSchema = new Schema({
   network_name: {
     type: String,
-    required: 'Kindly enter the name of the member'
+    required: 'Kindly enter the String/Alphanumeric name of the network'
   },
   SSID_number: {
-    type: String
+    type: String,
+    required: 'Raw SSID # (digits) of the network'
   },
   SSID_type: {
     type: String,
@@ -18,11 +19,11 @@ var WifiSchema = new Schema({
       'VLAN',
       'WLAN',
       'Site/Location'
-    ]
+    ],
+    required: "[ 'Wireless Network','VLAN','WLAN','Site/Location']"
   },
   pw: {
-    type: String,
-    required: 'Error setting Wifi Password'
+    type: String
   },
   manufacturer: {
     type: String,
@@ -37,4 +38,4 @@ var WifiSchema = new Schema({
   },
 });
 
-module.exports = mongoose.model('wifi', WifiSchema);
+module.exports = mongoose.model('Wifi', WifiSchema);

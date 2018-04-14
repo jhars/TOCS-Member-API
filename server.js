@@ -2,7 +2,8 @@ const express = require('express'),
   app = express(),
   port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
-  Task = require('./api/models/memberModel'), //created model loading here
+  memberModel = require('./api/models/memberModel'), //created model loading here
+  wifiModel = require('./api/models/wifiModel'), //created model loading here
   bodyParser = require('body-parser'),
   cheerio = require('cheerio'),
   http = require('http'), // is this used anywhere?)
@@ -30,6 +31,9 @@ mongoose.connect(uristring, function (err, client) {
 
 
 const routes = require('./api/routes/memberRoutes'); //importing route
+// const memberRoutes = require('./api/routes/memberRoutes');
+// const wifiRoutes = require('./api/routes/wifiRoutes');
+
 routes(app); //register the route
 
 app.use(function(req, res) {
