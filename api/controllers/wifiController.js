@@ -12,7 +12,7 @@ const mongoose = require('mongoose'),
 // ==>> GOOD EXAMPLE: Baseline CREATE Data-Object NodeJS Route
 exports.create_wifi_pw = function (req, res) {
 	let data = req.body;
-	  
+
   var wifi = new Wifi({
     network_name: data["network_name"],
     SSID_number: data["SSID_number"],
@@ -28,13 +28,14 @@ exports.create_wifi_pw = function (req, res) {
 }
 
 //_______________________________________________________________
-// GET - Route to getch CURRENT WIFI PASSWORD
+// GET - Route to fetch CURRENT WIFI PASSWORD
 exports.fetch_current_pw = function (req, res) {
 
 	//HARD CODING network name here________//
 	Wifi.findOne({network_name: "TheOfficeCoffeeShop_VIP"}, function(err, ssid) {
-		console.log("SSID: " + ssid["pw"]);
-		
+	// Wifi.findOne({network_name: "TheOfficeCoffeeShop_VIP"}, function(err, ssid) {
+		console.log("SSID: " + ssid);
+
 		if (err) {
 			res.send(err)
 		} else {
@@ -84,4 +85,3 @@ exports.wifi_pw_manager = function (req, res) {
 // ######################################################################## //
 // ######################################################################## //
 // ######################################################################## //
-

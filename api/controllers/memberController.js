@@ -25,14 +25,14 @@ var pswd = "Grand Circus"
 // GET - List All Members
 exports.list_all_members = function(req, res) {
   Member.find({}, function(err, member) {
-    
+
     if (err) {
       res.status(400); // Bad Request
       res.send(err)
     } else {
       res.json(member)
     }
-    
+
   })
 };
 
@@ -82,7 +82,7 @@ exports.authenticate_member_ironwifi = function(req, res) {
 
   console.log("_________Request Details_________");
   console.log(req.body);
-  
+
   Member.find({email: req.body.email}, function(err, member) {
 
     console.log("MEMBER LENGTH: " + member.length);
@@ -108,19 +108,19 @@ exports.authenticate_member_ironwifi = function(req, res) {
       res.sendFile(unconfirmed_email_page);
 
     } else {
-      
+
       var obj1;
       for (var i in member) {
         const plan = member[i]['membership_plan'];
-        
-        if (plan == 'Road Warrior' || plan == 'Small Business Membership') {
+
+        if (plan == 'Road Warrior' || plan == 'Small Business Membership' || 'Partner') {
           // res.send(err);
-          // res.end();     
+          // res.end();
           msg = "Welcome " + plan + " Member! \n the password for our faster, premium network is: ";
           code = 200
           er = err
 
-        
+
         } else {
           msg = "Thanks for signing in! " + plan + " Member! Enjoy Free Wi-Fi!";
           pswd = null
@@ -129,17 +129,17 @@ exports.authenticate_member_ironwifi = function(req, res) {
           res.status(401);
 
         } // ENDS COBOT Membership+Plan Logic
-        
+
         //need smarter logic for handling membership_plans
         console.log("___________iteration logic object: " + i + "\n___________" + obj1);
       }
-      
+
     } // ENDS -- if(err)
 
     if (code == 200) {
-      
-      
-      
+
+
+
       // res.status(200)
 
       // res.json({
@@ -162,7 +162,7 @@ exports.authenticate_member_ironwifi = function(req, res) {
     //   });
 
     } else {
-      
+
       let unconfirmed_email_page = __dirname + "/unconfirmed_email.html";
       res.sendFile(unconfirmed_email_page);
 
@@ -186,7 +186,7 @@ exports.authenticate_member_ironwifi = function(req, res) {
 // POST -  .find {Member by:EMAIL}
 exports.find_member_by_email = function(req, res) {
   Member.find({email: req.body.email}, function(err, member) {
-    
+
     console.log(member);
 
     if (err) {
@@ -194,12 +194,12 @@ exports.find_member_by_email = function(req, res) {
       // res.status(401); // Unauthorized
       // res.status(402); // payment required
       // res.status(403);    // forbidden
-      res.send(err);      
+      res.send(err);
     } else if (member.length == 0) {
       // res.status(403);
-      res.json("No TOCS/COBOT Members w/ with matching email 02");  
+      res.json("No TOCS/COBOT Members w/ with matching email 02");
     } else {
-      
+
       var obj1;
       for (var i in member) {
         const plan = member[i]['membership_plan'];
@@ -216,7 +216,7 @@ exports.find_member_by_email = function(req, res) {
 
       res.json(member);
     }
-  
+
   });
 };
 
@@ -231,7 +231,7 @@ exports.find_member_by_phone = function(req, res) {
   });
 };
 
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 // - - - - - - - - - - COBOT API ROUTES - - - - - - - - - - - - - - - - - - - - //
 
 
@@ -241,7 +241,7 @@ exports.find_member_by_phone = function(req, res) {
 
 exports.subscribe_to_cobot_comfirm_membership_subscription = function(req, res) {
     console.log(req.body);
-    
+
     const callbackRoute = "https://tocs-api.herokuapp.com/member/confirm"
 
     var cobotSubscribeRequest = {
@@ -256,9 +256,9 @@ exports.subscribe_to_cobot_comfirm_membership_subscription = function(req, res) 
       },
       json: true // Automatically stringifies the body to JSON
     };
-    
+
     rp(cobotSubscribeRequest).then(data => {
-      
+
       console.log("---------- COBOT SUBSCRIBE REQUEST RESPONSE DATA: ---------- \n" + data)
 
     }).catch(err => {
@@ -291,7 +291,7 @@ exports.confirm_membership_cobot_subscription = function(req, res) {
     },
     json: true
   }
-  
+
   rp(getNewMemberCobotAPIRequest).then(data => {
 
     console.log("========== Sanity Check #1 ==========")
@@ -323,7 +323,7 @@ exports.confirm_membership_cobot_subscription = function(req, res) {
       console.log("========== SANITY Check " + property1 + " ==========")
     }
 
-    
+
     console.log("========== Sanit Check #4 ==========")
 
 
@@ -353,16 +353,16 @@ exports.fetch_all_members = function(req, res) {
     },
     json: true
   }
-  
+
   rp(cobotAllMembersAPIRequest).then(data => {
     console.log("RECORDS LENGTH " + data.length)
-    
+
     var obj1;
 
     for (var property1 in data) {
-      
+
       obj1 = data[property1];
-      
+
       var member = new Member({
         name: obj1["name"],
         email: obj1["email"],
