@@ -14,16 +14,25 @@ E] WP Landing Page
 
 
 
-ToDo:
+DOCS - SETUP STEPS:
 
+#1) CLEAR DATABASE
+#2) POPULATE DATABASE
+#3) CREATE WIFI NETWORK
 
+SAMPLE BODY:
 
+{
+    "network_name": "TheOfficeCoffeeShop_VIP",
+    "SSID_number": "123456",
+    "SSID_type": "Wireless",
+    "pw": "theoffice2015",
+    "manufacturer": "Iron"
+}
 
 
 ToDo:
 - Choose (non captive-portal) redirect page for Premium Network
-
-
 
 
 DONE:
@@ -47,7 +56,7 @@ Save Each User in DB
 Build GET route for Retrieving User by phone/email
 	-> Return 200 Error
 
-Optimize Error Codes 
+Optimize Error Codes
 
 (tdd, is it better?)
 ___________
@@ -65,7 +74,7 @@ UNIFI:
 - Set Bandwidth (Mbps) Limits for 'Paid' & 'Free'
 
 
-- - - - - - - - - 
+- - - - - - - - -
 
 
 => Add Webhooks for new user
@@ -81,25 +90,20 @@ UNIFI:
 COBOT MEMBERSHIP PURTCHASE URL:
 https://the-office-ro.cobot.me/
 
-- - - - - - - - - 
+- - - - - - - - -
 Add Footer
-- - - - - - - - - 
+- - - - - - - - -
 Wire Up Premium Network ion Iron WiFi
-- - - - - - - - - 
+- - - - - - - - -
 Free Network Design Improvements
-- - - - - - - - - 
+- - - - - - - - -
 
-- - - - - - - - - 
+- - - - - - - - -
 
 Splash Page Design
-	
+
 	options:
 
 		1) use kendra design
 		2) iframe
 		3) Use Thrive Architect for Splash Page
-
-
-
-
-

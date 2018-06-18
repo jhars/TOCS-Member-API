@@ -10,6 +10,7 @@ const mongoose = require('mongoose'),
 //_______________________________________________________________
 // POST - Route to CREATE Password for Iron Wifi Premimum Network
 // ==>> GOOD EXAMPLE: Baseline CREATE Data-Object NodeJS Route
+// /premium_wifi/password
 exports.create_wifi_pw = function (req, res) {
 	let data = req.body;
 
